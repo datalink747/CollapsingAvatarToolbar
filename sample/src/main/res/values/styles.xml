@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="Theme.Sample" parent="Base.Theme.Sample"></style>
+
+    <style name="Base.Theme.Sample" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+
+    <style name="TextAppearance.Row" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+</resources>
