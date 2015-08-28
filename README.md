@@ -21,7 +21,7 @@ dependencies {
 
 Add `com.sloydev.collapsingavatartoolbar.CollapsingAvatarToolbar` to your layout:
 
-```
+```xml
 <com.sloydev.collapsingavatartoolbar.CollapsingAvatarToolbar
   android:layout_width="wrap_content"
   android:layout_height="?attr/actionBarSize"
@@ -36,7 +36,7 @@ Add `com.sloydev.collapsingavatartoolbar.CollapsingAvatarToolbar` to your layout
 
 It must be placed inside a CollapsingToolbarLayout with a sibling Toolbar, like this:
 
-```
+```xml
 <android.support.design.widget.CoordinatorLayout
   ...
   >
