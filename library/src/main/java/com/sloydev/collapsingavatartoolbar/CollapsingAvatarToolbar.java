@@ -1,8 +1,8 @@
 package com.sloydev.collapsingavatartoolbar;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
@@ -15,15 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CollapsingAvatarToolbar extends LinearLayout implements AppBarLayout.OnOffsetChangedListener {
-
-    private static final float DEFAULT_MAX_PADDING = 72 * 3;
-    private static final float DEFAULT_MIN_PADDING = 16 * 3;
-
-    private static final float DEFAULT_MAN_IMAGE_SIZE = 60 * 3;
-    private static final float DEFAULT_MIN_IMAGE_SIZE = 40 * 3;
-
-    private static final float DEFAULT_MAX_TEXT_SIZE = 19;
-    private static final float DEFAULT_MIN_TEXT_SIZE = 18;
 
     private View avatarView;
     private TextView titleView;
@@ -45,25 +36,48 @@ public class CollapsingAvatarToolbar extends LinearLayout implements AppBarLayou
     private float maxOffset;
 
     public CollapsingAvatarToolbar(Context context) {
-        super(context);
+        this(context, null);
         init();
     }
 
     public CollapsingAvatarToolbar(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
-    }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public CollapsingAvatarToolbar(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
-    }
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CollapsingAvatarToolbar, 0, 0);
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public CollapsingAvatarToolbar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init();
+        try {
+            collapsedPadding = a.getDimension(R.styleable.CollapsingAvatarToolbar_collapsedPadding, -1);
+            expandedPadding = a.getDimension(R.styleable.CollapsingAvatarToolbar_expandedPadding, -1);
+
+            collapsedImageSize = a.getDimension(R.styleable.CollapsingAvatarToolbar_collapsedImageSize, -1);
+            expandedImageSize = a.getDimension(R.styleable.CollapsingAvatarToolbar_expandedImageSize, -1);
+
+            collapsedTextSize = a.getDimension(R.styleable.CollapsingAvatarToolbar_collapsedTextSize, -1);
+            expandedTextSize = a.getDimension(R.styleable.CollapsingAvatarToolbar_expandedTextSize, -1);
+        } finally {
+            a.recycle();
+        }
+
+        final Resources resources = getResources();
+        if (collapsedPadding < 0) {
+            collapsedPadding = resources.getDimension(R.dimen.default_collapsed_padding);
+        }
+        if (expandedPadding < 0) {
+            expandedPadding = resources.getDimension(R.dimen.default_expanded_padding);
+        }
+        if (collapsedImageSize < 0) {
+            collapsedImageSize = resources.getDimension(R.dimen.default_collapsed_image_size);
+        }
+        if (expandedImageSize < 0) {
+            expandedImageSize = resources.getDimension(R.dimen.default_expanded_image_size);
+        }
+        if (collapsedTextSize < 0) {
+            collapsedTextSize = resources.getDimension(R.dimen.default_collapsed_text_size);
+        }
+        if (expandedTextSize < 0) {
+            expandedTextSize = resources.getDimension(R.dimen.default_expanded_text_size);
+        }
     }
 
     private void init() {
@@ -179,7 +193,7 @@ public class CollapsingAvatarToolbar extends LinearLayout implements AppBarLayou
     }
 
     private void setTextSize(float currentTextSize) {
-        titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, currentTextSize);
+        titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, currentTextSize);
     }
 
     private void setAvatarSize(int currentImageSize) {
