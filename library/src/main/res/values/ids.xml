@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="cat_avatar" type="id"></item>
+    <item name="cat_title" type="id"></item>
+</resources>
