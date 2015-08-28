@@ -106,3 +106,8 @@ It must be placed inside a CollapsingToolbarLayout with a sibling Toolbar, like 
 Improvements are most than welcome. Feel free to send a Pull Request or open an Issue.
 
 I am pretty bad at explaining myself. Check out the sample project for implementation details or ask me anything you need to know.
+
+# External libraries
+- [Support v7 AppCompat Library](https://developer.android.com/tools/support-library/features.html)
+- [Design Support Library](https://developer.android.com/tools/support-library/features.html)
+- [CircleImageView](https://github.com/hdodenhof/CircleImageView) (for sample)
