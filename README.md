@@ -5,7 +5,5 @@ This little library/sample demonstrates how to add a Collapsible Toolbar to your
 ![sample](https://raw.githubusercontent.com/Sloy/CollapsingAvatarToolbar/master/art/collapsingavatar.gif)
 
 ## TODO
-- Remove hardcoded pixel sizes
-- Make values customizable
 - Explain stuff
 - Publish
