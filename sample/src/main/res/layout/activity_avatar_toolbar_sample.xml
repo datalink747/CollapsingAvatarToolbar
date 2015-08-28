@@ -23,6 +23,44 @@
               app:layout_collapseMode="pin"
               app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+            <com.sloydev.collapsingavatartoolbar.CollapsingAvatarToolbar android:id="@+id/stuff_container"
+              android:layout_width="wrap_content"
+              android:layout_height="?attr/actionBarSize"
+              android:background="#00cccccc"
+              android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView android:id="@id/cat_avatar"
+                  android:layout_width="40dp"
+                  android:layout_height="40dp"
+                  android:layout_gravity="center_vertical"
+                  android:background="#0000cc00"
+                  android:src="@drawable/cutecat" />
+
+                <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_vertical"
+                  android:layout_marginLeft="16dp"
+                  android:background="#000000ff"
+                  android:orientation="vertical">
+
+                    <TextView android:id="@id/cat_title"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:fontFamily="sans-serif-medium"
+                      android:text="Title"
+                      android:textColor="@android:color/white"
+                      android:textSize="18dp" />
+
+                    <TextView android:id="@+id/subtitle"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:alpha="0.5"
+                      android:text="Subtitle"
+                      android:textColor="@android:color/white"
+                      android:textSize="15dp" />
+                </LinearLayout>
+            </com.sloydev.collapsingavatartoolbar.CollapsingAvatarToolbar>
+
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>

@@ -12,5 +12,6 @@ public class AvatarToolbarSample extends AppCompatActivity {
         setContentView(R.layout.activity_avatar_toolbar_sample);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.menu_avatar_toolbar_sample);
+        toolbar.setNavigationIcon(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_mtrl_am_alpha);
     }
 }
