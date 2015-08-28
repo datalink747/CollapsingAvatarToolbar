@@ -28,20 +28,20 @@ public class CollapsingAvatarToolbar extends LinearLayout implements AppBarLayou
     private View avatarView;
     private TextView titleView;
 
-    private float maxPadding = DEFAULT_MAX_PADDING;
-    private float minPadding = DEFAULT_MIN_PADDING;
+    private float collapsedPadding;
+    private float expandedPadding;
 
-    private float maxImageSize = DEFAULT_MAN_IMAGE_SIZE;
-    private float minImageSize = DEFAULT_MIN_IMAGE_SIZE;
+    private float expandedImageSize;
+    private float collapsedImageSize;
 
-    private float minTextSize = DEFAULT_MIN_TEXT_SIZE;
-    private float maxTextSize = DEFAULT_MAX_TEXT_SIZE;
+    private float collapsedTextSize;
+    private float expandedTextSize;
 
     private boolean valuesCalculatedAlready = false;
     private Toolbar toolbar;
     private AppBarLayout appBarLayout;
-    private float minHeight;
-    private float maxHeight;
+    private float collapsedHeight;
+    private float expandedHeight;
     private float maxOffset;
 
     public CollapsingAvatarToolbar(Context context) {
@@ -145,19 +145,19 @@ public class CollapsingAvatarToolbar extends LinearLayout implements AppBarLayou
     }
 
     private void calculateValues() {
-        minHeight = toolbar.getHeight();
-        maxHeight = appBarLayout.getHeight() - toolbar.getHeight();
-        maxOffset = maxHeight;
+        collapsedHeight = toolbar.getHeight();
+        expandedHeight = appBarLayout.getHeight() - toolbar.getHeight();
+        maxOffset = expandedHeight;
     }
 
     private void updateViews(float expandedPercentage, int currentOffset) {
         float inversePercentage = 1 - expandedPercentage;
         float translation = -currentOffset + ((float) toolbar.getHeight() * expandedPercentage);
 
-        float currHeight = minHeight + (maxHeight - minHeight) * expandedPercentage;
-        float currentPadding = minPadding + (maxPadding - minPadding) * inversePercentage;
-        float currentImageSize = minImageSize + (maxImageSize - minImageSize) * expandedPercentage;
-        float currentTextSize = minTextSize + (maxTextSize - minTextSize) * expandedPercentage;
+        float currHeight = collapsedHeight + (expandedHeight - collapsedHeight) * expandedPercentage;
+        float currentPadding = expandedPadding + (collapsedPadding - expandedPadding) * inversePercentage;
+        float currentImageSize = collapsedImageSize + (expandedImageSize - collapsedImageSize) * expandedPercentage;
+        float currentTextSize = collapsedTextSize + (expandedTextSize - collapsedTextSize) * expandedPercentage;
 
         setContainerOffset(translation);
         setContainerHeight((int) currHeight);
